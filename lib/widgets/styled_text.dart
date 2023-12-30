@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class StyledText extends StatelessWidget {
   // Properties
   final String text;
   final double? fontSize;
+  final FontWeight? fontWeight;
 
   // Constructor
   const StyledText({
     super.key,
     required this.text,
-    this.fontSize = 32.0,
+    this.fontSize = 22.0,
+    this.fontWeight = FontWeight.bold,
   });
 
   // Overridden bild method
@@ -17,9 +20,10 @@ class StyledText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: TextStyle(
+      textAlign: TextAlign.center,
+      style: GoogleFonts.lato(
         fontSize: fontSize,
-        fontWeight: FontWeight.bold,
+        fontWeight: fontWeight,
         color: Colors.white,
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/widgets/questions_screen.dart';
 import 'package:quiz_app/widgets/start_screen.dart';
+import 'package:quiz_app/data/questions.dart';
 
 class Quiz extends StatefulWidget {
   // Constructor
@@ -12,6 +13,8 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
   Widget? activeScreen;
+  List<String> selectedAnswers =
+      []; // Final if not reassigned, but for example added
 
   // Extra initialization when the state is created. Runs before build()
   @override
@@ -23,8 +26,28 @@ class _QuizState extends State<Quiz> {
   // Change the active screen
   void switchScreen() {
     setState(() {
-      activeScreen = const QuestionsScreen();
+      activeScreen = QuestionsScreen(
+        onSelectAnswer: chooseAnswer,
+      );
     });
+  }
+
+  // Choose answer method
+  void chooseAnswer(String answer) {
+    selectedAnswers.add(answer);
+
+    if (selectedAnswers.length < questions.length) {
+      // setState(() {
+      //   activeScreen = QuestionsScreen(
+      //     onSelectAnswer: chooseAnswer,
+      //   );
+      // });
+    } else {
+      setState(() {
+        selectedAnswers.clear();
+        activeScreen = StartScreen(switchScreen);
+      });
+    }
   }
 
   // Build the widget tree. Runs every time setState() is called

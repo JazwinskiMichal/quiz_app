@@ -10,4 +10,11 @@ class QuizQuestion {
     required this.answers,
     required this.correctAnswer,
   });
+
+  // Shuffle Answers Method
+  List<String> shuffleAnswers() {
+    final shuffeld = List.of(answers);
+    shuffeld.shuffle();
+    return shuffeld;
+  }
 }
