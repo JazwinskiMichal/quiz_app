@@ -30,6 +30,15 @@ class _QuizState extends State<Quiz> {
   // Build the widget tree. Runs every time setState() is called
   @override
   Widget build(BuildContext context) {
+    // Can also use if/else statement to switch between screens. Then initiState() is not needed.
+
+    // var screenWidget = StartScreen(switchScreen);
+    // if (activeScreen == 'start-screen') {
+    //   screenWidget = StartScreen(switchScreen);
+    // } else {
+    //   screenWidget = const QuestionsScreen();
+    // }
+
     return MaterialApp(
       home: Scaffold(
         body: Container(
@@ -43,7 +52,8 @@ class _QuizState extends State<Quiz> {
               end: Alignment.bottomRight,
             ),
           ),
-          child: activeScreen,
+          child:
+              activeScreen, // could also use ternary solution like activeScreen == 'start-screen' ? StartScreen(switchScreen) : const QuestionsScreen(). Then initiState() is not needed.
         ),
       ),
     );
