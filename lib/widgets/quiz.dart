@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/widgets/questions_screen.dart';
+import 'package:quiz_app/widgets/results_screen.dart';
 import 'package:quiz_app/widgets/start_screen.dart';
 import 'package:quiz_app/data/questions.dart';
 
@@ -19,12 +20,12 @@ class _QuizState extends State<Quiz> {
   // Extra initialization when the state is created. Runs before build()
   @override
   void initState() {
-    activeScreen = StartScreen(switchScreen);
+    activeScreen = StartScreen(startQuiz);
     super.initState();
   }
 
-  // Change the active screen
-  void switchScreen() {
+  // Start quiz method
+  void startQuiz() {
     setState(() {
       activeScreen = QuestionsScreen(
         onSelectAnswer: chooseAnswer,
@@ -44,8 +45,10 @@ class _QuizState extends State<Quiz> {
       // });
     } else {
       setState(() {
-        selectedAnswers.clear();
-        activeScreen = StartScreen(switchScreen);
+        activeScreen = ResultsScreen(
+          selectedAnswers: selectedAnswers,
+          resetQuiz: startQuiz,
+        );
       });
     }
   }
