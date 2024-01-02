@@ -27,6 +27,7 @@ class _QuizState extends State<Quiz> {
   // Start quiz method
   void startQuiz() {
     setState(() {
+      selectedAnswers.clear();
       activeScreen = QuestionsScreen(
         onSelectAnswer: chooseAnswer,
       );

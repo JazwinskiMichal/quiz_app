@@ -6,6 +6,8 @@ class StyledText extends StatelessWidget {
   final String text;
   final double? fontSize;
   final FontWeight? fontWeight;
+  final Color? color;
+  final TextAlign? textAlign;
 
   // Constructor
   const StyledText({
@@ -13,6 +15,8 @@ class StyledText extends StatelessWidget {
     required this.text,
     this.fontSize = 22.0,
     this.fontWeight = FontWeight.bold,
+    this.color = Colors.white,
+    this.textAlign = TextAlign.center,
   });
 
   // Overridden bild method
@@ -20,11 +24,11 @@ class StyledText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      textAlign: TextAlign.center,
+      textAlign: textAlign,
       style: GoogleFonts.lato(
         fontSize: fontSize,
         fontWeight: fontWeight,
-        color: Colors.white,
+        color: color,
       ),
     );
   }
