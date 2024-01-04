@@ -7,16 +7,8 @@ class ResultsScreen extends StatelessWidget {
   final List<String> selectedAnswers;
   final void Function() resetQuiz;
 
-  // Constructor
-  const ResultsScreen({
-    required this.selectedAnswers,
-    required this.resetQuiz,
-    super.key,
-  });
-
   // Get Mapped answers
-  // Map is like Dictionary
-  List<Map<String, Object>> getSummaryData() {
+  List<Map<String, Object>> get summaryData {
     final summary = <Map<String, Object>>[];
 
     for (var i = 0; i < selectedAnswers.length; i++) {
@@ -33,6 +25,13 @@ class ResultsScreen extends StatelessWidget {
 
     return summary;
   }
+
+  // Constructor
+  const ResultsScreen({
+    required this.selectedAnswers,
+    required this.resetQuiz,
+    super.key,
+  });
 
   int calculateScore() {
     return selectedAnswers
@@ -64,7 +63,7 @@ class ResultsScreen extends StatelessWidget {
               height: 20,
             ),
             QuestionsSummary(
-              summaryData: getSummaryData(),
+              summaryData: summaryData,
             ),
             const SizedBox(
               height: 20,

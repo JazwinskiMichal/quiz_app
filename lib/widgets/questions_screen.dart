@@ -50,7 +50,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               height: 20,
             ),
             // Spread operator to add all the answers to the list
-            ...currentQuestion.shuffleAnswers().map((answer) => Container(
+            ...currentQuestion.shuffledAnswers.map((answer) => Container(
                   margin: const EdgeInsets.only(bottom: 5),
                   child: AnswerButton(
                     answer,
